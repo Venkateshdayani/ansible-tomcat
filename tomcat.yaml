@@ -26,9 +26,9 @@ tasks:
   - name: download tomcat
     get_url:
       url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.54/bin/apache-tomcat-9.0.54.tar.gz
-      dest:/tmp/apache-tomcat-9.0.54.tar.gz
+      dest: /tmp/apache-tomcat-9.0.54.tar.gz
   - name :untar tomcat
     unarchive:
       src: /tmp/apache-tomcat-9.0.54.tar.gz
       dest: /opt/tomcat
-      
+
