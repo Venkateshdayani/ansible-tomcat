@@ -1,34 +1,34 @@
 ---
-name: tomcat installation 9
-hosts: all
-become: yes
-tasks:
-  - name: update packages and install java
-    apt:
-      name: openjdk-11-jdk
-      update_cache: yes
-      state: present
-  - name: create group for tomcat
-    group:
-      name: tomcat
-      state: present
-  - name: create a dir for tomcat
-    file:
-      path: /opt/tomcat
-      state: directory    
-  - name: create user for tomcat
-    user:
-      name: tomcat
-      shell: bin/false
-      home: /opt/tomcat
-      group: tomcat
-      state: present
-  - name: download tomcat
-    get_url:
-      url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.54/bin/apache-tomcat-9.0.54.tar.gz
-      dest: /tmp/apache-tomcat-9.0.54.tar.gz
-  - name: untar tomcat
-    unarchive:
-      src: /tmp/apache-tomcat-9.0.54.tar.gz
-      dest: /opt/tomcat
+- name: tomcat installation 9
+  hosts: all
+  become: yes
+  tasks:
+    - name: update packages and install java
+      apt:
+        name: openjdk-11-jdk
+        update_cache: yes
+        state: present
+    - name: create group for tomcat
+      group:
+        name: tomcat
+        state: present
+    - name: create a dir for tomcat
+      file:
+        path: /opt/tomcat
+        state: directory    
+    - name: create user for tomcat
+      user:
+        name: tomcat
+        shell: bin/false
+        home: /opt/tomcat
+        group: tomcat
+        state: present
+    - name: download tomcat
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.54/bin/apache-tomcat-9.0.54.tar.gz
+        dest: /tmp/apache-tomcat-9.0.54.tar.gz
+    - name: untar tomcat
+      unarchive:
+        src: /tmp/apache-tomcat-9.0.54.tar.gz
+        dest: /opt/tomcat
 
